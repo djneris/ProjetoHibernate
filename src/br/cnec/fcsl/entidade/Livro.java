@@ -1,11 +1,10 @@
 package br.cnec.fcsl.entidade;
 
 
+import java.util.Calendar;
 import java.util.Collection;
-import java.util.Date;
-import java.util.GregorianCalendar;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,19 +23,20 @@ public class Livro {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(length=45)
 	private String nome;
 	
 	private int edicao;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date data_publicacao;
+	private Calendar data_publicacao;
 	
 	@ManyToOne
 	@JoinColumn(name="editora_id") 
 	private Editora editora;
 	
 	@ManyToMany
-	@JoinTable(name="livro_autor", schema="anotacoes",
+	@JoinTable(name="livro_autor",
 	joinColumns=@JoinColumn(name="livro_id"),
 	inverseJoinColumns=@JoinColumn(name="autor_id")) 	
 	private Collection<Autor> autor;
@@ -59,10 +59,23 @@ public class Livro {
 	public void setEdicao(int edicao) {
 		this.edicao = edicao;
 	}
-	public Date getData_publicacao() {
+	public Calendar getData_publicacao() {
 		return data_publicacao;
 	}
-	public void setData_publicacao(Date data_publicacao) {
+	public void setData_publicacao(Calendar data_publicacao) {
 		this.data_publicacao = data_publicacao;
 	}
+	public Editora getEditora() {
+		return editora;
+	}
+	public void setEditora(Editora editora) {
+		this.editora = editora;
+	}
+	public Collection<Autor> getAutor() {
+		return autor;
+	}
+	public void setAutor(Collection<Autor> autor) {
+		this.autor = autor;
+	}
+	
 }

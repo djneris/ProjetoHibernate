@@ -1,5 +1,6 @@
 package br.cnec.fcsl.entidade;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,8 +13,10 @@ public class Municipio {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
+	@Column(length=45)
 	private String nome;
 	
+	@Column(length=2)
 	private String uf;
 	
 	public long getId() {

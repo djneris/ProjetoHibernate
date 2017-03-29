@@ -1,13 +1,12 @@
 package br.cnec.fcsl.entidade;
 
-import java.util.Collection;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 
 @Entity
@@ -17,14 +16,14 @@ public class Editora {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(length=45)
 	private String nome;
 	
+	@Column(length=45)
 	private String email;
 	
+	@Column(length=10)
 	private String telefone;
-	
-	@OneToMany(mappedBy="editora")
-	private Collection<Livro> livro;
 	
 	@ManyToOne
 	@JoinColumn(name="endereco_id")
@@ -54,6 +53,12 @@ public class Editora {
 	}
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+	public Endereco getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 	
 }

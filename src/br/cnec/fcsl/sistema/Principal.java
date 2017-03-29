@@ -1,5 +1,6 @@
 package br.cnec.fcsl.sistema;
 
+
 import org.hibernate.Session;
 
 import br.cnec.fcsl.entidade.*;
@@ -10,8 +11,8 @@ public class Principal {
 
 	public static void main(String[] args) {
 		Autor autor = new Autor();
-		Editora editora = new Editora();
 		Endereco endereco = new Endereco();
+		Editora editora = new Editora();
 		Livro livro = new Livro();
 		Municipio municipio = new Municipio();
 		Logradouro logradouro = new Logradouro();

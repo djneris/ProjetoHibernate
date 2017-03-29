@@ -1,14 +1,12 @@
 package br.cnec.fcsl.entidade;
 
-import java.util.Collection;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Endereco {
@@ -17,18 +15,20 @@ public class Endereco {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(length=45)
 	private String logradouro;
 	
+	@Column(length=5)
 	private String numero;
 	
+	@Column(length=10)
 	private String complemento;
 	
+	@Column(length=45)
 	private String bairro;
 	
+	@Column(length=8)
 	private String cep;
-	
-	@OneToMany(mappedBy="endereco")
-	private Collection<Editora> editora;
 	
 	@ManyToOne
 	@JoinColumn(name="tipo_logradouro_id")
@@ -74,5 +74,18 @@ public class Endereco {
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
+	public Logradouro getTipo_logradouro() {
+		return tipo_logradouro;
+	}
+	public void setTipo_logradouro(Logradouro tipo_logradouro) {
+		this.tipo_logradouro = tipo_logradouro;
+	}
+	public Municipio getMunicipio() {
+		return municipio;
+	}
+	public void setMunicipio(Municipio municipio) {
+		this.municipio = municipio;
+	}
+	
 	
 }
